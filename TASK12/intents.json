@@ -1,0 +1,216 @@
+{
+    "intents": [
+      {
+        "tag": "greeting",
+        "patterns": [
+          "Hi",
+          "Hello",
+          "Hey",
+          "Good morning",
+          "Good evening"
+        ],
+        "responses": [
+          "Hello! Welcome to StayEase. How can I assist you today?",
+          "Hi there! How may I help you with your hotel stay?"
+        ]
+      },
+      {
+        "tag": "room_availability",
+        "patterns": ["Are rooms available?", "Do you have any rooms left?", "Can I book a room for tonight?", "Is there any vacancy?"],
+        "responses": ["Yes, we have several rooms available. What type of room are you looking for?", "We do have rooms available! Would you like single, double, or deluxe?"]
+      },
+      {
+        "tag": "room_types",
+        "patterns": ["What room types do you offer?", "Show me available room options", "Tell me about the rooms"],
+        "responses": ["We offer single, double, and deluxe rooms. All come with complimentary breakfast and Wi-Fi."]
+      },
+      {
+        "tag": "room_prices",
+        "patterns": ["How much is a room?", "What are the prices?", "Room rates please", "What does a deluxe room cost?"],
+        "responses": [
+          "Single rooms start at $50/night, double at $80/night, and deluxe at $120/night.",
+          "Here are our room rates:\n- Single: $50\n- Double: $80\n- Deluxe: $120\nWould you like to book one?"
+        ]
+      },
+      {
+        "tag": "booking_process",
+        "patterns": ["How do I book a room?", "I want to book a room", "Help me with a reservation", "Can I reserve a room?"],
+        "responses": [
+          "Sure! May I know your check-in and check-out dates?",
+          "Absolutely, let's get started with your booking. When would you like to check in?"
+        ]
+      },
+      {
+        "tag": "facilities",
+        "patterns": ["What facilities are available?", "Do you have a gym?", "Is there a pool?", "What amenities do you offer?"],
+        "responses": [
+          "Our hotel offers a swimming pool, gym, spa, free Wi-Fi, and complimentary breakfast.",
+          "We have a gym, pool, restaurant, free parking, and 24/7 room service."
+        ]
+      },
+      {
+        "tag": "location",
+        "patterns": ["Where is the hotel located?", "Hotel address?", "How can I reach the hotel?", "Is it near the airport?"],
+        "responses": [
+          "We're located at 123 Sunset Boulevard, just 15 minutes from the airport.",
+          "Our address is 123 Sunset Blvd. Would you like directions or a map link?"
+        ]
+      },
+      {
+        "tag": "checkin_checkout",
+        "patterns": ["What is check-in time?", "When can I check out?", "Hotel check-in and checkout timings?"],
+        "responses": [
+          "Check-in is from 2 PM and checkout is until 11 AM.",
+          "You can check in after 2 PM. Checkout should be done before 11 AM."
+        ]
+      },  
+      {
+        "tag": "goodbye",
+        "patterns": [
+          "Bye",
+          "Goodbye",
+          "See you later",
+          "Thanks, that's all"
+        ],
+        "responses": [
+          "Thank you for choosing StayEase! Have a great day.",
+          "Goodbye! Feel free to ask if you need help later."
+        ]
+      },
+      
+      {
+        "tag": "amenities",
+        "patterns": [
+          "What amenities do you provide?", "Is there a pool?",
+          "Gym hai?", "Free WiFi?", "¿Tienen estacionamiento?"
+        ],
+        "responses": [
+          "We offer:\n- 🏊 Pool | 🏋️ Gym | 📶 Free WiFi\n- 🅿️ Parking ($%s/day) | 🍳 Breakfast buffet",
+          "Amenities: %s. Need specifics?"
+        ]
+      },
+      {
+        "tag": "pet_policy",
+        "patterns": ["Are pets allowed?", "Can I bring my dog?", "Do you allow pets?", "Is it pet-friendly?"],
+        "responses": ["Yes, we're a pet-friendly hotel! Small pets are allowed with a $20 cleaning fee."]
+      },
+      {
+        "tag": "cancellation_policy",
+        "patterns": ["What is your cancellation policy?", "Can I cancel my booking?", "How do I cancel a reservation?"],
+        "responses": ["You can cancel your booking 24 hours before check-in with no extra charge."]
+      },
+      {
+        "tag": "restaurant_info",
+        "patterns": ["Do you have a restaurant?", "What food options are there?", "Is breakfast included?", "Where can I eat?"],
+        "responses": [
+          "Yes! We have an in-house restaurant serving local and international cuisine. Breakfast is complimentary.",
+          "Our restaurant is open 7 AM to 10 PM. Breakfast is included with every booking!"
+        ]
+      },
+      {
+        "tag": "wifi_info",
+        "patterns": ["Do you offer Wi-Fi?", "Is there free internet?", "How do I connect to Wi-Fi?"],
+        "responses": ["Yes, we offer free high-speed Wi-Fi throughout the hotel. The login details will be provided at check-in."]
+      },
+      {
+        "tag": "parking_info",
+        "patterns": ["Is parking available?", "Do you have parking?", "Can I park my car at the hotel?"],
+        "responses": ["Yes, we offer free secure parking for all guests."]
+      },
+      {
+        "tag": "early_checkin",
+        "patterns": ["Can I check in early?", "Is early check-in possible?", "I’ll arrive before 2 PM. Can I check in?"],
+        "responses": ["Early check-in depends on availability. Please contact us a day before your arrival."]
+      },
+      {
+        "tag": "late_checkout",
+        "patterns": ["Can I check out late?", "Is late checkout allowed?", "Can I stay a bit longer?"],
+        "responses": ["Late checkout is subject to availability and may incur a small fee."]
+      },
+      {
+        "tag": "nearby_attractions",
+        "patterns": ["What’s nearby?", "Places to visit near the hotel?", "Are there any tourist attractions around?"],
+        "responses": [
+          "We're close to several attractions like Central Park, City Museum, and the Grand Mall. Would you like directions?"
+        ]
+      },
+      {
+        "tag": "contact_info",
+        "patterns": ["What’s your phone number?", "How do I contact the hotel?", "Do you have an email address?"],
+        "responses": [
+          "You can call us at +123-456-7890 or email us at info@ourhotel.com. We're available 24/7!"
+        ]
+      },
+      {
+        "tag": "reviews",
+        "patterns": ["Do you have good reviews?", "What do people say about this hotel?", "Can I read guest reviews?"],
+        "responses": [
+          "Guests love our service and cleanliness! We have a 4.6 rating on Google. Would you like the link?"
+        ]
+      }, 
+      {
+        "tag": "payment_methods",
+        "patterns": [
+          "How can I pay?", "Do you accept credit cards?",
+          "Cash chalega?", "¿Aceptan PayPal?"
+        ],
+        "responses": [
+          "We accept:\n- 💳 Visa/MasterCard\n- 💵 Cash (USD/INR)\n- 📱 UPI/Google Pay\n- 🌐 PayPal",
+          "Payment options: %s. Secure processing! 🔒"
+        ]
+      },
+      {
+        "tag": "special_requests",
+        "patterns": [
+          "I need a baby crib", "Vegetarian breakfast options?",
+          "Wheelchair access?", "Khaas arrangement ho sakta hai?"
+        ],
+        "responses": [
+          "Noted! We’ll arrange **%s**. Confirm at check-in. ✔️",
+          "Special request **%s** is possible. Any allergies?"
+        ]
+      },
+      {
+        "tag": "emergency",
+        "patterns": [
+          "Emergency!", "Call an ambulance", "Doctor chahiye",
+          "¡Necesito ayuda urgente!"
+        ],
+        "responses": [
+          "🚨 Connecting you to front desk (call: %s). Stay calm!",
+          "EMERGENCY HOTLINE: %s. Help is on the way!"
+        ],
+        "context": ["urgent"]
+      },
+      {
+        "tag": "thanks",
+        "patterns": [
+          "Thank you", "Thanks a lot", "Shukriya", "Gracias"
+        ],
+        "responses": [
+          "You’re welcome! Enjoy your stay. 😊",
+          "Happy to help! Reach out anytime. 🌟"
+        ]
+      },  
+      {
+        "tag": "thanks",
+        "patterns": [
+          "Thank you",
+          "Thanks a lot",
+          "Appreciate it"
+        ],
+        "responses": [
+          "You’re welcome! Enjoy your stay at StayEase.",
+          "Happy to help! 😊"
+        ]
+      },
+      {
+        "tag": "fallback",
+        "patterns": [],
+        "responses": [
+          "I didn’t understand that. Could you rephrase?",
+          "For hotel-related queries, try: 'Room prices', 'Book a room', etc."
+        ]
+      }
+    ]
+  }
