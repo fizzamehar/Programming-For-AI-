@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Aid Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="hero-banner">
+            <h1>
+                <svg class="medical-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8V16M8 12H16M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M12 6V8M12 16V18M6 12H8M16 12H18" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                First Aid Assistant
+            </h1>
+            <p>
+                <span class="pulse-emoji">🩹</span>
+                Immediate medical guidance when you need it most
+                <span class="pulse-emoji delay">💊</span>
+            </p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="firstaid-info">
+                <h2><i class="fas fa-book-medical"></i> Essential First Aid Guide</h2>
+                
+                <div class="info-cards">
+                    <div class="card">
+                        <h3><i class="fas fa-burn"></i> Burns</h3>
+                        <p>Cool under running water for 10-15 minutes. Don't use ice. Cover with sterile non-stick dressing.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-heartbeat"></i> Cardiac Arrest</h3>
+                        <p>Start CPR: 30 chest compressions (5cm deep) then 2 rescue breaths. Continue until help arrives.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-cut"></i> Severe Bleeding</h3>
+                        <p>Apply direct pressure with clean cloth. Elevate wound if possible. Don't remove soaked dressings.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3><i class="fas fa-lungs"></i> Choking</h3>
+                        <p>Give 5 back blows between shoulder blades, then 5 abdominal thrusts (Heimlich maneuver).</p>
+                    </div>
+
+                    <div class="card">
+                        <h3><i class="fas fa-bone"></i> Fractures</h3>
+                        <p>Immobilize the area. Apply ice pack wrapped in cloth. Don't try to realign bones.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3><i class="fas fa-head-side-virus"></i> Stroke</h3>
+                        <p>Remember FAST: Face drooping, Arm weakness, Speech difficulty, Time to call emergency.</p>
+                    </div>
+                </div>
+                
+                <div class="emergency-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Emergency Procedures</h2>
+                    <ul>
+                        <li><strong>Unconscious but breathing:</strong> Place in recovery position</li>
+                        <li><strong>Seizure:</strong> Protect head, don't restrain, time the episode</li>
+                        <li><strong>Poisoning:</strong> Call poison control. Don't induce vomiting</li>
+                        <li><strong>Heat stroke:</strong> Cool with wet cloths, fan, move to shade</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 20px;"><i class="fas fa-phone-alt"></i> Emergency Contacts</h3>
+                    <p><strong>National Emergency:</strong> 1122</p>
+                    <p><strong>Poison Control:</strong> 1166</p>
+                </div>
+            </div>
+
+            <div class="chat-window">
+                <div class="chat-header">
+                    <h3><i class="fas fa-comment-medical"></i> First Aid Chat Assistant</h3>
+                </div>
+                
+                <div class="disclaimer">
+                    <i class="fas fa-info-circle"></i> I provide first aid guidance only. For serious conditions, please consult a doctor immediately.
+                </div>
+                
+                <div class="chat-area" id="chat-box">
+                    <div class="message bot-message">
+                        Hello! I can guide you through basic first aid procedures. What do you need help with?
+                        <div class="message-time">10:00 AM</div>
+                    </div>
+                </div>
+                
+                <div class="input-area">
+                    <input type="text" id="user-input" placeholder="Describe your first aid need...">
+                    <button id="send-btn"><i class="fas fa-heart"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><b> © 2025 First Aid Assistant | For educational purposes only | Developed by Fizza Farooq </b></p>
+        </div>
+    </div>
+
+    <script>
+        function getCurrentTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes} ${ampm}`;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            // Add user message with time
+            const time = getCurrentTime();
+            addMessage(message, 'user-message', time);
+            input.value = '';
+            
+            // Get response from backend
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const responseTime = getCurrentTime();
+                if (data.message.includes('🚨 EMERGENCY')) {
+                    addMessage(data.message, 'emergency-message', responseTime);
+                } else {
+                    addMessage(data.message, 'bot-message', responseTime);
+                }
+            })
+            .catch(() => {
+                const errorTime = getCurrentTime();
+                addMessage("Couldn't connect. Please try again.", 'bot-message', errorTime);
+            });
+        }
+        
+        function addMessage(text, className, time) {
+            const chatBox = document.getElementById('chat-box');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${className}`;
+            msgDiv.innerHTML = `${text}<div class="message-time">${time}</div>`;
+            chatBox.appendChild(msgDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        document.getElementById('user-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+        
+        document.getElementById('send-btn').addEventListener('click', sendMessage);
+    </script>
+</body>
+</html>
